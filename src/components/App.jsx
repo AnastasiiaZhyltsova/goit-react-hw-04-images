@@ -37,7 +37,7 @@ function App() {
           setImages(images => [...images, ...res.hits]);
           setStatus('resolved');
           setResponse(false);
-          setTotal(res.hits.length);
+          setTotal(res.total);
         })
         .catch(error => {
           setError(error);
@@ -63,7 +63,7 @@ function App() {
       <Searchbar onSubmit={handleSearchbarSubmit} />
       <ImageGallery status={status} error={error} images={images} />
       {response && <Loader />}
-      {status === 'resolved' && total >= 12 && (
+      {status === 'resolved' && total > images.length > 0 && (
         <Button onClickButton={loadMore} />
       )}
     </div>
