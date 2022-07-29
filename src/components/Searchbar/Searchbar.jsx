@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FcSearch } from 'react-icons/fc';
+import PropTypes from 'prop-types';
+
 import style from './Searchbar.module.css';
 
 function Searchbar({ onSubmit }) {
@@ -16,7 +18,7 @@ function Searchbar({ onSubmit }) {
       return;
     }
     onSubmit(searchQuery);
-    setSearchQuery('');
+    // setSearchQuery('');
   };
 
   return (
@@ -41,5 +43,9 @@ function Searchbar({ onSubmit }) {
     </header>
   );
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import style from './Modal.module.css';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -24,7 +25,7 @@ function Modal({ onClose, bigImage }) {
     return () => {
       window.removeEventListener('keydown', hendleKeyDown);
     };
-  });
+  }, [onClose]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
@@ -40,5 +41,10 @@ function Modal({ onClose, bigImage }) {
     modalRoot
   );
 }
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  bigImage: PropTypes.string.isRequired,
+};
 
 export default Modal;

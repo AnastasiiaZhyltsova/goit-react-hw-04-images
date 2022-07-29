@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
+import PropTypes from 'prop-types';
+
 import style from './ImageGalleryItem.module.css';
 
 function ImageGalleryItem({ item }) {
@@ -8,8 +10,6 @@ function ImageGalleryItem({ item }) {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-  console.log(showModal);
-
   return (
     <li className={style.item}>
       <img
@@ -24,5 +24,11 @@ function ImageGalleryItem({ item }) {
     </li>
   );
 }
+ImageGalleryItem.propTypes = {
+  item: PropTypes.shape({
+    webformatURL: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+  }),
+};
 
 export default ImageGalleryItem;
